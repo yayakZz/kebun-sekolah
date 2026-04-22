@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Plant {
+  id            String   @id @default(uuid())
+  name          String
+  latinName     String
+  category      String   // Tanaman Hias, Tanaman Pelindung, dll
+  quantity      Int
+  description   String
+  photoPath     String   // Lokasi file gambar
+  qrCodeUrl     String?  // (Optional) Path/URL QR Code yang di-generate
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
